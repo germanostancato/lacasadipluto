@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi sono – La Casa di Pluto</title>
+  <meta name="description" content="Conosci la persona che si prende cura del tuo cane: percorso, esperienza e valori educativi della Casa di Pluto." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #F5F3ED;
+      --bg-card: #FFFFFF;
+      --primary: #3B5D50;
+      --primary-dark: #264136;
+      --accent: #E7D7C9;
+      --accent-soft: #F3E6D8;
+      --text-main: #333333;
+      --text-muted: #5A5A5A;
+      --border-soft: #D2D2CC;
+      --radius-card: 18px;
+      --shadow-soft: 0 16px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #FFF7F0 0, #F5F3ED 45%, #F0F4F2 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background-color: rgba(245, 243, 237, 0.92);
+      border-bottom: 1px solid rgba(210, 210, 204, 0.7);
+    }
+
+    .nav {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+    }
+
+    .logo span { font-size: 1.1rem; }
+
+    .logo-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid var(--accent);
+      background-color: #fff;
+      flex-shrink: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.3rem;
+      margin: 0;
+      padding: 0;
+      font-size: 0.95rem;
+    }
+
+    nav a {
+      color: var(--text-main);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.18rem;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: none;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.4rem 1.5rem 3.5rem;
+    }
+
+    .page-intro-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.84rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background-color: rgba(231, 215, 201, 0.55);
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .page-intro-label span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--primary-dark);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 2.7vw, 2.4rem);
+      margin: 0 0 0.4rem;
+      color: var(--primary-dark);
+    }
+
+    .page-subtitle {
+      margin: 0 0 2rem;
+      font-size: 1.01rem;
+      color: var(--text-muted);
+      max-width: 640px;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-top: 0;
+      margin-bottom: 0.9rem;
+      font-size: 0.98rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-highlight {
+      margin-top: 1.4rem;
+      padding: 1rem 1.1rem;
+      background-color: var(--accent-soft);
+      border-radius: 16px;
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+    }
+
+    .about-photo {
+      position: relative;
+      padding: 0.6rem;
+      border-radius: 24px;
+      background: linear-gradient(140deg, rgba(231, 215, 201, 0.9), rgba(63, 96, 82, 0.9));
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25);
+    }
+
+    .about-photo-inner {
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .about-note {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      background-color: rgba(255, 255, 255, 0.94);
+      padding: 0.55rem 0.8rem;
+      border-radius: 14px;
+      font-size: 0.78rem;
+      color: var(--primary-dark);
+      max-width: 80%;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+    }
+
+    .section {
+      margin-top: 3rem;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      margin: 0 0 0.6rem;
+      color: var(--primary-dark);
+    }
+
+    .section p {
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      font-size: 0.96rem;
+      color: var(--text-main);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background-color: #F1ECE6;
+      color: var(--primary-dark);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+
+    .value-card {
+      background-color: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      font-size: 0.94rem;
+    }
+
+    .value-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.02rem;
+      color: var(--primary-dark);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 1.7rem;
+      border-radius: 999px;
+      background-color: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.96rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(59, 93, 80, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      box-shadow: 0 12px 28px rgba(59, 93, 80, 0.55);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      border-top: 1px solid rgba(210, 210, 204, 0.7);
+      padding: 1.3rem 1.5rem 1.4rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2.5rem;
+      background-color: rgba(245, 243, 237, 0.94);
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding-inline: 1.1rem; }
+      nav ul { display: none; }
+      .nav-cta { display: inline-flex; }
+      main { padding-inline: 1.1rem; padding-top: 2rem; }
+      .about-layout { grid-template-columns: 1fr; }
+      .about-note { max-width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-avatar">
+          <img src="avatar.jpg" alt="Illustrazione che rappresenta La Casa di Pluto">
+        </div>
+        <span>La Casa di Pluto</span>
+      </div>
+      <nav aria-label="Navigazione principale">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#valori">Valori</a></li>
+          <li><a href="#percorso">Percorso</a></li>
+          <li><a href="#contatto">Contatto</a></li>
+        </ul>
+      </nav>
+      <a href="index.html#contatti" class="btn-primary nav-cta">Torna alla home</a>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="chi-titolo">
+      <div class="page-intro-label"><span></span>Chi c’è dietro la Casa di Pluto</div>
+      <h1 id="chi-titolo">Chi sono</h1>
+      <p class="page-subtitle">
+        Mi chiamo [il tuo nome] e da anni accompagno bambini e cani in contesti educativi basati su cura,
+        ascolto e relazioni serene. In questa pagina ti racconto qualcosa in più su di me.
+      </p>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <p>
+            La Casa di Pluto nasce dal desiderio di creare un luogo in cui i cani possano vivere le proprie
+            giornate in modo tranquillo, rispettoso e accompagnati da una presenza adulta stabile.
+          </p>
+          <p>
+            Il mio percorso parte dal lavoro nei servizi educativi per l’infanzia: negli anni ho imparato
+            quanto siano importanti i tempi lenti, l’ascolto delle emozioni e la costruzione di routine
+            chiare. Questa esperienza ha influenzato profondamente anche il mio modo di stare con gli animali.
+          </p>
+          <p>
+            Nel tempo ho iniziato a prendermi cura anche dei cani delle famiglie che conoscevo, integrando
+            formazione specifica, osservazione e confronto con professionisti del settore. Da qui è nata
+            l’idea di trasformare questa attenzione quotidiana in un servizio strutturato.
+          </p>
+
+          <div class="about-highlight">
+            Oggi La Casa di Pluto è un punto di riferimento per chi cerca un luogo familiare, semplice e
+            organizzato, dove il cane viene accolto per quello che è, con i suoi ritmi e le sue abitudini.
+          </div>
+        </div>
+
+        <aside class="about-photo" aria-label="Fotografie dal lavoro quotidiano">
+          <div class="about-photo-inner">
+            <img src="Atelier.jpg" alt="Momento di attività in cerchio all'aperto">
+          </div>
+          <div class="about-note">
+            Momenti di cura, gioco e ascolto sono al centro delle mie giornate di lavoro.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="valori" class="section" aria-labelledby="valori-titolo">
+      <h2 id="valori-titolo">I valori che guidano il mio lavoro</h2>
+      <p>
+        Quando accolgo un cane, penso sempre alla fiducia che mi affidi. Per questo la mia attenzione è
+        rivolta sia al suo benessere, sia alla serenità della famiglia che lo accompagna.
+      </p>
+
+      <div class="values-grid">
+        <article class="value-card">
+          <h3>Ascolto</h3>
+          <p>
+            Ogni percorso parte da un colloquio in cui raccogliamo abitudini, paure, preferenze e bisogni
+            specifici del cane e della famiglia.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <h3>Chiarezza</h3>
+          <p>
+            Preferisco poche informazioni, ma chiare: cosa offre il servizio, come funziona la giornata,
+            quali sono i passaggi per l’inserimento.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <h3>Gentilezza</h3>
+          <p>
+            Toni calmi, gesti delicati e tempi lenti: credo che la gentilezza sia la base per far sentire
+            il cane al sicuro.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <h3>Coerenza</h3>
+          <p>
+            Quello che racconto online è lo stesso che trovi nella realtà: un ambiente semplice, curato,
+            pensato per ridurre lo stress.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="percorso" class="section" aria-labelledby="percorso-titolo">
+      <h2 id="percorso-titolo">Un po’ del mio percorso</h2>
+      <p>
+        Qui puoi inserire in modo sintetico le tappe principali della tua formazione e dell’esperienza
+        professionale: studi, corsi, anni di lavoro con bambini e animali, eventuali collaborazioni.
+      </p>
+      <p>
+        L’obiettivo non è elencare tutto, ma dare un’idea chiara di come sei arrivata a costruire la Casa
+        di Pluto e perché questo progetto per te ha senso.
+      </p>
+      <div class="pill-list">
+        <span class="pill">Esperienza nei servizi educativi</span>
+        <span class="pill">Formazione sul benessere animale</span>
+        <span class="pill">Collaborazioni con famiglie e professionisti</span>
+      </div>
+    </section>
+
+    <section id="contatto" class="section" aria-labelledby="contatto-titolo">
+      <h2 id="contatto-titolo">Se vuoi conoscermi meglio</h2>
+      <p>
+        Se ti fa piacere raccontarmi qualcosa del tuo cane o capire se la Casa di Pluto è il posto giusto
+        per lui, possiamo sentirci con calma. Nella home trovi la sezione contatti con email e telefono.
+      </p>
+      <a href="index.html#contatti" class="btn-primary">Vai alla pagina contatti</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> La Casa di Pluto</span>
+      <span>Accoglienza cani · Roma</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
