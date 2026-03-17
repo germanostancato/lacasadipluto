@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galleria – lacasadipluto</title>
+  <meta name="description" content="Galleria fotografica di lacasadipluto: vita quotidiana, attività all'aperto, gite e momenti speciali al nido.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-body: #fffdf7;
+      --bg-hero: #ffe9f0;
+      --bg-section-alt: #e8f7ff;
+      --color-primary: #ff7b54;
+      --color-secondary: #6ec3ff;
+      --color-accent: #ffc75f;
+      --color-text: #3b3b3b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Baloo 2", system-ui, -apple-system, sans-serif;
+      background: var(--bg-body);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(90deg, #ffb6c9, #ffe08a, #9ce0ff);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      color: #ffffff;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.2rem 3rem;
+    }
+
+    section {
+      padding: 2.6rem 0 2.2rem;
+    }
+
+    h1, h2 {
+      color: var(--color-primary);
+      margin: 0 0 1rem;
+      text-align: center;
+    }
+
+    p {
+      margin: 0 0 0.8rem;
+      font-size: 1.02rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      color: #555;
+    }
+
+    .gallery-section {
+      background: var(--bg-section-alt);
+      border-radius: 24px;
+      padding: 2.2rem 1.6rem 2.3rem;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      margin-top: 1.8rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+      background: #fff;
+      transform: translateY(0);
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 0.5rem 0.7rem 0.7rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .badge {
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background: #ffffff;
+      font-size: 0.85rem;
+      color: #555;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    footer {
+      background: #2f2942;
+      color: #f7f3ff;
+      padding: 1.6rem 1.2rem 2rem;
+      margin-top: 2.6rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .footer-inner a {
+      color: #ffd3ff;
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 780px) {
+      .header-inner { flex-direction: column; }
+      nav { justify-content: center; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 520px) {
+      .gallery-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">lacasadipluto</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="galleria.html">Galleria</a>
+        <a href="contatti.html">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h1>Galleria di vita al nido</h1>
+      <p class="section-subtitle">
+        Uno sguardo sulla quotidianità di <strong>lacasadipluto</strong>:
+        giochi, letture, esplorazioni nel verde e piccoli grandi momenti condivisi.
+      </p>
+
+      <div class="badge-strip">
+        <span class="badge">Vita quotidiana</span>
+        <span class="badge">Attività all’aperto</span>
+        <span class="badge">Gite e uscite</span>
+        <span class="badge">Relazioni e affetto</span>
+      </div>
+
+      <div class="gallery-section">
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="giochi.jpeg" alt="Bambini seduti in cerchio ad ascoltare una storia">
+            <div class="gallery-caption">Storie e racconti nella stanza dei giochi.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="Atelier.jpg" alt="Atelier del nido con libri e giochi colorati">
+            <div class="gallery-caption">Atelier con materiali e giochi a portata di bambino.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="Mani.jpeg" alt="Mani di bambini con cuori colorati disegnati">
+            <div class="gallery-caption">Laboratori creativi e segni di affetto colorati.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="prato.jpeg" alt="Cerchio di bambini nel prato durante un'attività all'aperto">
+            <div class="gallery-caption">Cerchio nel prato per attività e giochi in natura.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="spalle.jpeg" alt="Abbraccio tra educatrice e bambini nel parco">
+            <div class="gallery-caption">Relazioni fatte di abbracci e vicinanza.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="lettura.jfif" alt="Lettura di libri all'aperto su tappeti colorati">
+            <div class="gallery-caption">Letture all’aperto su tappeti e coperte.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="gita1.jfif" alt="Gruppo di bambini in gita allo zoo che osservano gli animali">
+            <div class="gallery-caption">Gita allo zoo e scoperte insieme.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="gita.jfif" alt="Bambini che passeggiano in fila tenendosi per mano">
+            <div class="gallery-caption">Passeggiate in sicurezza mano nella mano.</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="fiore.jfif" alt="Bambina che porge un fiore all'educatrice">
+            <div class="gallery-caption">Piccoli gesti di cura tra bambini ed educatrici.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> lacasadipluto – Asilo nido a Roma</span>
+      <span>Via dei Cantelmo 138 · Roma</span>
+      <a href="contatti.html">Contatti</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
