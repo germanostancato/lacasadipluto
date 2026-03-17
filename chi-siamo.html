@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi siamo – lacasadipluto</title>
+  <meta name="description" content="Scopri chi siamo: il progetto educativo, gli spazi e il clima familiare di lacasadipluto, asilo nido a Roma.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-body: #fffdf7;
+      --bg-hero: #ffe9f0;
+      --bg-section-alt: #e8f7ff;
+      --color-primary: #ff7b54;
+      --color-secondary: #6ec3ff;
+      --color-accent: #ffc75f;
+      --color-text: #3b3b3b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Baloo 2", system-ui, -apple-system, sans-serif;
+      background: var(--bg-body);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(90deg, #ffb6c9, #ffe08a, #9ce0ff);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      color: #ffffff;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.2rem 3rem;
+    }
+
+    section {
+      padding: 2.6rem 0 2.2rem;
+    }
+
+    h1, h2, h3 {
+      color: var(--color-primary);
+      margin: 0 0 1rem;
+    }
+
+    h1 { font-size: clamp(2rem, 4vw, 2.6rem); }
+    h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
+
+    p { margin: 0 0 0.8rem; font-size: 1.02rem; }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      color: #555;
+    }
+
+    .hero-about {
+      margin-top: 1.8rem;
+      background: var(--bg-hero);
+      border-radius: 24px;
+      padding: 2.4rem 1.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-about::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.7) 0, transparent 55%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.6) 0, transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-about-text,
+    .hero-about-visual {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .pill-tag {
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      font-size: 0.86rem;
+      color: #555;
+    }
+
+    .big-circle {
+      width: min(260px, 100%);
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #fffef7, #ffcfdf);
+      padding: 10px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .big-circle img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+      border: 2px solid rgba(255,183,142,0.4);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .feature-card p {
+      font-size: 0.96rem;
+      color: #555;
+    }
+
+    .section-alt {
+      background: var(--bg-section-alt);
+      border-radius: 22px;
+      padding: 2.2rem 1.6rem 2.2rem;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .gallery-4 {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .gallery-4 img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+    }
+
+    .caption {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 0.3rem;
+    }
+
+    .cta {
+      margin-top: 2.6rem;
+      text-align: center;
+      padding: 2rem 1.4rem 2.3rem;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #9ce0ff, #ffe08a);
+      color: #3c2f2f;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+    }
+
+    .cta h2 {
+      color: #ffffff;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      margin-bottom: 0.6rem;
+    }
+
+    .cta p {
+      max-width: 520px;
+      margin: 0 auto 1.4rem;
+      color: #fefefe;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.78rem 1.7rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.98rem;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #ff5f35;
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.22);
+    }
+
+    footer {
+      background: #2f2942;
+      color: #f7f3ff;
+      padding: 1.6rem 1.2rem 2rem;
+      margin-top: 2.6rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .footer-inner a {
+      color: #ffd3ff;
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 780px) {
+      .header-inner { flex-direction: column; }
+      nav { justify-content: center; }
+
+      .hero-about {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .pill-row {
+        justify-content: center;
+      }
+
+      .columns {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-4 img {
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-about {
+        padding: 2rem 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">lacasadipluto</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="contatti.html">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO CHI SIAMO -->
+    <section class="hero-about">
+      <div class="hero-about-text">
+        <h1>Un nido dove sentirsi a casa</h1>
+        <p>
+          A <strong>lacasadipluto</strong> ogni bambino trova uno spazio caldo e rassicurante,
+          dove può esplorare, sperimentare e crescere nel rispetto dei propri tempi.
+        </p>
+        <div class="pill-row">
+          <span class="pill-tag">Piccoli gruppi</span>
+          <span class="pill-tag">Relazione e ascolto</span>
+          <span class="pill-tag">Gioco all’aria aperta</span>
+        </div>
+      </div>
+
+      <div class="hero-about-visual">
+        <div class="big-circle">
+          <img src="giochi.jpeg" alt="Bambini che ascoltano una storia in sezione">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGETTO EDUCATIVO -->
+    <section id="progetto">
+      <h2 style="text-align:center;">Il nostro progetto educativo</h2>
+      <p class="section-subtitle">
+        Il nido è un luogo di vita quotidiana, dove le routine diventano occasioni
+        educative e il gioco è il linguaggio principale dei bambini.
+      </p>
+
+      <div class="columns">
+        <article class="feature-card">
+          <h3>Centralità del bambino</h3>
+          <p>
+            Osserviamo ogni bambino e costruiamo percorsi personalizzati, valorizzando
+            competenze, interessi e bisogni affettivi.
+          </p>
+          <p>
+            Le proposte sono pensate per sostenere autonomia, linguaggio, motricità
+            e capacità relazionali in modo naturale e giocoso.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <h3>Alleanza educativa con le famiglie</h3>
+          <p>
+            Crediamo nel dialogo continuo con i genitori: colloqui, momenti di confronto
+            e documentazione delle esperienze aiutano a camminare insieme.
+          </p>
+          <p>
+            Ogni famiglia viene accolta con ascolto, rispetto e attenzione alla storia
+            unica di ogni bambino.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ATTIVITÀ E CLIMA RELAZIONALE -->
+    <section id="team" class="section-alt">
+      <h2 style="text-align:center;">Attività, affetto e relazioni</h2>
+      <p class="section-subtitle">
+        Le giornate al nido alternano momenti di gioco libero, laboratori strutturati
+        e tanto tempo dedicato alle relazioni, all’ascolto e agli abbracci.
+      </p>
+
+  <div class="gallery-4">
+  <div>
+    <img src="prato.jpeg" alt="Cerchio di bambini nel prato durante un’attività all’aperto">
+    <div class="caption">Attività all’aperto nel prato vicino al nido.</div>
+  </div>
+  <div>
+    <img src="gita.jfif" alt="Lettura di storie all'aperto su tappeti colorati">
+    <div class="caption">Storie e libri anche fuori, su tappeti e coperte.</div>
+  </div>
+  <div>
+    <img src="gita1.jfif" alt="Bambini in gita che osservano gli animali allo zoo">
+    <div class="caption">Gite e scoperte insieme fuori dal nido.</div>
+  </div>
+  <div>
+    <img src="fiore.jfif" alt="Bambina che porge un fiore all'educatrice">
+    <div class="caption">Piccoli gesti di cura e relazione quotidiana.</div>
+  </div>
+</div>
+
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Ti va di conoscerci dal vivo?</h2>
+      <p>
+        Scrivici o chiamaci per fissare una visita: potrai vedere gli spazi,
+        incontrare le educatrici e portare con te il tuo bambino.
+      </p>
+      <a href="contatti.html" class="btn-primary">Vai alla pagina contatti</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> lacasadipluto – Asilo nido a Roma</span>
+      <span>Via dei Cantelmo 138 · Roma</span>
+      <a href="index.html">Torna alla Home</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

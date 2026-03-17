@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contatti – lacasadipluto</title>
+  <meta name="description" content="Contattaci per prenotare un colloquio o richiedere informazioni su lacasadipluto, asilo nido a Roma.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-body: #fffdf7;
+      --bg-hero: #ffe9f0;
+      --bg-section-alt: #e8f7ff;
+      --color-primary: #ff7b54;
+      --color-secondary: #6ec3ff;
+      --color-accent: #ffc75f;
+      --color-text: #3b3b3b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Baloo 2", system-ui, -apple-system, sans-serif;
+      background: var(--bg-body);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(90deg, #ffb6c9, #ffe08a, #9ce0ff);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      color: #ffffff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      color: #ffffff;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.2rem 3rem;
+    }
+
+    section {
+      padding: 2.6rem 0 2rem;
+    }
+
+    h1, h2 {
+      color: var(--color-primary);
+      text-align: center;
+      margin: 0 0 1rem;
+    }
+
+    p {
+      margin: 0 0 0.8rem;
+      font-size: 1.02rem;
+    }
+
+    .hero-contact {
+      margin-top: 1.8rem;
+      background: var(--bg-hero);
+      border-radius: 24px;
+      padding: 2.2rem 1.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-contact::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.7) 0, transparent 55%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.6) 0, transparent 60%);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .hero-contact-text,
+    .hero-contact-visual {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-contact-text h1 {
+      text-align: left;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-info {
+      margin-top: 0.8rem;
+      font-size: 0.98rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-info strong {
+      color: #4b3b3b;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 0.6rem;
+    }
+
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--color-secondary);
+    }
+
+    .hero-contact-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-wrapper {
+      width: min(230px, 100%);
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #fffef7, #ffcfdf);
+      padding: 10px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .contact-grid {
+      margin-top: 2.4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+      border: 2px solid rgba(255,183,142,0.4);
+    }
+
+    .small-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #777;
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+
+    .map-wrapper {
+      margin-top: 1rem;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+      border: 3px solid rgba(255,255,255,0.9);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      display: block;
+    }
+
+    .mini-gallery {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .mini-gallery img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.14);
+    }
+
+    .form-card {
+      background: var(--bg-section-alt);
+      border-radius: 20px;
+      padding: 1.6rem 1.5rem 1.5rem;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.1);
+    }
+
+    form { margin-top: 1rem; }
+
+    .field-group { margin-bottom: 0.9rem; }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #4b3b3b;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border-radius: 12px;
+      border: 2px solid rgba(0,0,0,0.06);
+      font-family: inherit;
+      font-size: 0.96rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      background: #ffffff;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #6ec3ff;
+      box-shadow: 0 0 0 3px rgba(110,195,255,0.25);
+      background: #ffffff;
+    }
+
+    .helper {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 0.15rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.78rem 1.7rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 0.98rem;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #ff5f35;
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.22);
+    }
+
+    .privacy-note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 0.4rem;
+    }
+
+    footer {
+      background: #2f2942;
+      color: #f7f3ff;
+      padding: 1.6rem 1.2rem 2rem;
+      margin-top: 2.6rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .footer-inner a {
+      color: #ffd3ff;
+      text-decoration: none;
+    }
+
+    .footer-inner a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 780px) {
+      .header-inner { flex-direction: column; }
+      nav { justify-content: center; }
+
+      .hero-contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-contact-text h1 {
+        text-align: center;
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .mini-gallery img {
+        height: 90px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-contact {
+        padding: 1.8rem 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">lacasadipluto</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="contatti.html">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO CONTATTI -->
+    <section class="hero-contact">
+      <div class="hero-contact-text">
+        <h1>Parliamone insieme</h1>
+        <p>
+          Siamo felici di accoglierti per una visita al nido, raccontarti il progetto
+          educativo e conoscere i bisogni della tua famiglia.
+        </p>
+
+        <div class="contact-info">
+          <p><strong>Telefono:</strong> 333 123 4567</p>
+          <p><strong>Email:</strong> <a href="mailto:lacasadipluto2025@gmail.com">lacasadipluto2025@gmail.com</a></p>
+          <p><strong>Indirizzo:</strong> Via dei Cantelmo 138, Roma</p>
+          <span class="badge">
+            <span class="badge-dot"></span>
+            Riceviamo su appuntamento
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-contact-visual">
+        <div class="avatar-wrapper">
+          <img src="avatar.jpeg" alt="Educatrice di lacasadipluto con i bambini">
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATTI + FORM -->
+    <section>
+      <div class="contact-grid">
+        <!-- Colonna sinistra: mappa + mini galleria -->
+        <div class="contact-card">
+          <span class="small-label">Dove siamo</span>
+          <h2>Un nido immerso nel verde</h2>
+          <p>
+            lacasadipluto si trova in una zona tranquilla di Roma, vicino al parco,
+            dove possiamo vivere ogni giorno esperienze all’aria aperta.
+          </p>
+
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps?q=Via%20dei%20Cantelmo%20138%20Roma&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <div class="mini-gallery">
+            <img src="prato.jpeg" alt="Bambini seduti in cerchio nel prato">
+            <img src="spalle.jpeg" alt="Abbraccio tra educatrice e bambini nel parco">
+            <img src="Atelier.jpg" alt="Lettura di storie nell'atelier del nido">
+          </div>
+        </div>
+
+        <!-- Colonna destra: form -->
+        <div class="form-card">
+          <span class="small-label">Richiesta informazioni</span>
+          <h2>Scrivici per una pre‑iscrizione</h2>
+          <p>
+            Compila il modulo: ti ricontatteremo per confermare l’appuntamento
+            o per inviarti maggiori dettagli su iscrizioni, orari e tariffe.
+          </p>
+
+          <form action="https://formspree.io/f/TUO_ID_FORMSPREE" method="POST">
+            <div class="field-group">
+              <label for="nome">Nome e cognome genitore</label>
+              <input type="text" id="nome" name="nome" required />
+            </div>
+
+            <div class="field-group">
+              <label for="bambino">Nome e età del bambino</label>
+              <input type="text" id="bambino" name="bambino" required />
+              <div class="helper">Es. “Luca, 20 mesi”.</div>
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="field-group">
+              <label for="telefono">Telefono</label>
+              <input type="tel" id="telefono" name="telefono" />
+            </div>
+
+            <div class="field-group">
+              <label for="messaggio">Messaggio</label>
+              <textarea id="messaggio" name="messaggio" placeholder="Raccontaci cosa stai cercando per il tuo bambino..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Invia richiesta</button>
+            <p class="privacy-note">
+              I dati inviati saranno utilizzati solo per rispondere alla tua richiesta di contatto.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> lacasadipluto – Asilo nido a Roma</span>
+      <span>Via dei Cantelmo 138 · Roma</span>
+      <a href="index.html">Torna alla Home</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
